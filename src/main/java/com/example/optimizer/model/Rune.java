@@ -10,16 +10,51 @@ public class Rune {
     @Id
     @GeneratedValue
     private Long id;
-
-    private String mainStat;
-    private String mainStatValue;
-
-    public Rune(String mainStat, String mainStatValue) {
-        this.mainStat = mainStat;
-        this.mainStatValue = mainStatValue;
-    }
+    private String unitId;
+    private String slot;
+    private String maintStatId;
+    private String setId;
+    private String subStat;
+    private String prefix;
 
     public Rune() {
+    }
+
+    public Rune(Long id, String unitId, String slot, String maintStatId, String setId, String subStat, String prefix) {
+        this.id = id;
+        this.unitId = unitId;
+        this.slot = slot;
+        this.maintStatId = maintStatId;
+        this.setId = setId;
+        this.subStat = subStat;
+        this.prefix = prefix;
+    }
+
+    @Override
+    public String toString() {
+        return "Rune{" +
+                "id=" + id +
+                ", unitId='" + unitId + '\'' +
+                ", slot='" + slot + '\'' +
+                ", maintStatId='" + maintStatId + '\'' +
+                ", setId='" + setId + '\'' +
+                '}';
+    }
+
+    public String getSubStat() {
+        return subStat;
+    }
+
+    public void setSubStat(String subStat) {
+        this.subStat = subStat;
+    }
+
+    public String getPrefix() {
+        return prefix;
+    }
+
+    public void setPrefix(String prefix) {
+        this.prefix = prefix;
     }
 
     public Long getId() {
@@ -30,28 +65,35 @@ public class Rune {
         this.id = id;
     }
 
-    public String getMainStat() {
-        return mainStat;
+    public String getUnitId() {
+        return unitId;
     }
 
-    public void setMainStat(String mainStat) {
-        this.mainStat = mainStat;
+    public void setUnitId(String unitId) {
+        this.unitId = unitId;
     }
 
-    public String getMainStatValue() {
-        return mainStatValue;
+    public String getSlot() {
+        return slot;
     }
 
-    public void setMainStatValue(String mainStatValue) {
-        this.mainStatValue = mainStatValue;
+    public void setSlot(String slot) {
+        this.slot = slot;
     }
 
-    @Override
-    public String toString() {
-        return "Rune{" +
-                "id=" + id +
-                ", mainStat='" + mainStat + '\'' +
-                ", mainStatValue='" + mainStatValue + '\'' +
-                '}';
+    public String getMaintStatId() {
+        return maintStatId;
+    }
+
+    public void setMaintStatId(String maintStatId) {
+        this.maintStatId = maintStatId;
+    }
+
+    public String getSetId() {
+        return setId;
+    }
+
+    public void setSetId(String setId) {
+        this.setId = setId;
     }
 }

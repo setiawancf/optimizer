@@ -1,8 +1,6 @@
 package com.example.optimizer.controller;
 
-import com.example.optimizer.exception.RuneNotFoundException;
 import com.example.optimizer.model.Rune;
-import com.example.optimizer.repository.RuneRepository;
 import com.example.optimizer.service.RuneService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,18 +21,18 @@ public class RuneController {
     @Autowired
     private RuneService runeService;
 
-    @GetMapping("/find")
+    @GetMapping("/find/all")//find all
     List<Rune> all() {
         return runeService.findAll();
     }
 
-    @GetMapping("/find/{id}")
+    @GetMapping("/find/{id}")//find rune by id
     Rune findOne(@PathVariable Long id) {
         return runeService.findById(id);
     }
 
-    @PostMapping("/add")
-    public ResponseEntity<Map<String, Object>> add(@RequestBody Rune newRune) {
+    @PostMapping("/add")//add new rune
+    public ResponseEntity<Map<String, Object>> addNewRune(@RequestBody Rune newRune) {
         Map<String,Object> map = new HashMap<String,Object>();
         try {
         map.put("status", runeService.addNewRune(newRune));
@@ -47,5 +45,11 @@ public class RuneController {
             e.printStackTrace();
             return new ResponseEntity<>(map, HttpStatus.BAD_REQUEST);
         }
+    }
+
+    @PostMapping("/add/unit")//add rune to unit
+    public ResponseEntity<Map<String, Object>> addToUnit(@RequestBody List<Rune> listRuneToAdd) {
+        Map<String,Object> map = new HashMap<String,Object>();
+        return null;
     }
 }
